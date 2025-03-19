@@ -208,96 +208,87 @@ const Topstories = () => {
   ]
 
   return (
-    <div className=''>
+<div className="p-4">
+  <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    {/* Left Column (Main Content) */}
+    <div className="md:col-span-3 bg-gray-100 p-4 rounded-lg shadow-lg">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Main News */}
+        <div className="md:col-span-2 bg-blue-500 p-4 bg-bg1 bg-cover h-64 w-full flex flex-col gap-2 justify-end rounded-lg shadow-md">
+          <p className="text-white font-bold text-2xl md:text-3xl">
+            Ghanaians to endure dumsor until end of year – IES predicts
+          </p>
+          <span className="bg-green-600 text-white px-3 py-1 text-sm rounded-lg w-fit">
+            News
+          </span>
+        </div>
 
-      <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-3 bg-gray-200 p-4">
-          <div className="grid grid-cols-3 gap-2">
-            <div className="col-span-2 bg-blue-200 p-2 bg-bg1 bg-cover h-64 w-full flex flex-col gap-2 justify-end">
-              <p className='text-white font-bold text-3xl'>Ghanaians to endure dumsor until end of year – IES predicts</p>
-              <h1 className='bg-green-400 w-12 text-center'>news</h1>
-            </div>
-            <div className="col-span-1">
-              <a href='https://www.ghanaweb.com/GhanaHomePage/entertainment/'>
-              <Card
-                hoverable
-
-                cover={<img alt="example" className='w-[100%] h-36' src={stone} />}
-              >
-                <h1 className='font-bold'>Where I come from, we don’t give up - Stonebwoy</h1>
-                <h1 className='text-sm bg-purple-800 text-white w-24 text-center'>entertainment</h1>
-              </Card>
-              </a>
-              
-            </div>
-          </div>
-          <div className='grid grid-cols-3 gap-4 mt-4'>
-          <a href='https://www.ghanaweb.com/GhanaHomePage/entertainment/'>
-   <Card
-              hoverable
-
-              cover={<img alt="example" className='w-[100%] h-38' src={shs} />}
-            >
-              <h1 className='font-bold'>Deciding to review the Free SHS policy</h1>
-              <h1 className='text-sm bg-red-600 text-white w-24 text-center'>opinions</h1>
+        {/* Right Side News */}
+        <div className="md:col-span-1">
+          <a href="https://www.ghanaweb.com/GhanaHomePage/entertainment/">
+            <Card hoverable className="rounded-lg overflow-hidden shadow-md">
+              <img alt="Entertainment News" className="w-full h-40 object-cover" src={stone} />
+              <div className="p-2">
+                <h1 className="font-bold text-gray-800">Where I come from, we don’t give up - Stonebwoy</h1>
+                <span className="text-sm bg-purple-700 text-white px-3 py-1 rounded-lg mt-2 inline-block">
+                  Entertainment
+                </span>
+              </div>
             </Card>
-</a>
-<a href='https://www.ghanaweb.com/GhanaHomePage/entertainment/'>
-  <Card
-              hoverable
-
-              cover={<img alt="example" className='w-[100%] h-42' src={naana} />}
-            >
-              <h1 className='font-bold'>Meet the Deputy Director-General of SSNIT Dr. Bernardette Naa Hoffman</h1>
-              <h1 className='text-sm bg-yellow-500 text-white w-24 text-center'>business</h1>
-            </Card>
-</a> 
-<a href='https://www.ghanaweb.com/GhanaHomePage/entertainment/'>
- <Card
-              hoverable
-
-              cover={<img alt="example" className='w-[100%] h-38' src={kudus} />}
-            >
-              <h1 className='font-bold'>Black Stars' struggles worsened after my departure – George Boateng</h1>
-              <h1 className='text-sm bg-green-700 text-white w-24 text-center'>sports</h1>
-            </Card>
-
-</a>
-           
-
-          </div>
-          <a href='https://www.ghanaweb.com/GhanaHomePage/television/news'>
-          <img className='mt-4' src={video}/>
-
           </a>
-
         </div>
-
-        <div className="col-span-1 mt-4">
-          <div className="bg-red-500 p-4 rounded-xl shadow-md mb-4">
-            <div className="flex items-center space-x-4">
-              <div className="w-96 h-20">
-                <img src={toare} alt="News" className="w-full h-full object-cover" />
-              </div>
-              <div className="text-white font-medium leading-4">
-                Anger as aid worker dies after DR Congo shooting
-              </div>
-            </div>
-            <h1 className="mt-4 text-sm text-gray-700">BBC</h1>
-          </div>
-
-          <img className='mt-4 w-full h-[60vh]' src={ad1} />
-          <img className='mt-4 w-full h-[60vh]' src={ad2} />
-
-        </div>
-
       </div>
-      <Divider />
 
+      {/* Additional News Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        {[ 
+          { src: shs, title: "Deciding to review the Free SHS policy", category: "Opinions", color: "bg-red-600" },
+          { src: naana, title: "Meet the Deputy Director-General of SSNIT Dr. Bernardette Naa Hoffman", category: "Business", color: "bg-yellow-500" },
+          { src: kudus, title: "Black Stars' struggles worsened after my departure – George Boateng", category: "Sports", color: "bg-green-700" }
+        ].map((news, index) => (
+          <a key={index} href="https://www.ghanaweb.com/GhanaHomePage/entertainment/">
+            <Card hoverable className="rounded-lg overflow-hidden shadow-md">
+              <img alt="News" className="w-full h-40 object-cover" src={news.src} />
+              <div className="p-2">
+                <h1 className="font-bold text-gray-800">{news.title}</h1>
+                <span className={`text-sm text-white px-3 py-1 rounded-lg mt-2 inline-block ${news.color}`}>
+                  {news.category}
+                </span>
+              </div>
+            </Card>
+          </a>
+        ))}
+      </div>
 
-
-
+      {/* Video Section */}
+      <a href="https://www.ghanaweb.com/GhanaHomePage/television/news">
+        <img className="mt-6 w-full object-cover rounded-lg shadow-md" src={video} alt="Video" />
+      </a>
     </div>
+
+    {/* Right Column (Sidebar) */}
+    <div className="md:col-span-1">
+      {/* Trending News */}
+      <div className="bg-red-500 p-4 rounded-xl shadow-lg text-white">
+        <div className="flex flex-col md:flex-row items-center md:space-x-4">
+          <img src={toare} alt="News" className="w-full md:w-32 h-24 object-cover rounded-lg" />
+          <div className="font-medium leading-5 mt-2 md:mt-0">
+            Anger as aid worker dies after DR Congo shooting
+          </div>
+        </div>
+        <h1 className="mt-4 text-sm text-gray-300">BBC</h1>
+      </div>
+
+      {/* Advertisements */}
+      {[ad1, ad2].map((ad, index) => (
+        <img key={index} className="mt-6 w-full h-64 object-cover rounded-lg shadow-md" src={ad} alt={`Ad ${index + 1}`} />
+      ))}
+    </div>
+  </div>
+  <Divider className="mt-6" />
+</div>
+
+
 
   )
 }
